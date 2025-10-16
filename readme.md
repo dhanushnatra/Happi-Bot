@@ -4,7 +4,7 @@ This guide explains how to install models from Ollama and Use Happi-Bot.
 
 <div>
 <video width="600" controls>
-    <source src="screen.mp4" type="video/mp4">
+    <source src="./screen.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 </div>
