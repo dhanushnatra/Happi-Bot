@@ -1,12 +1,21 @@
 var userInput = document.getElementById("userInp");
+
 var messages = [];
+
 var regPattern = /<think>(.*?)<\/think>/i;
 console.log("Hi I am Happi ... !!");
+
+
 var url = "http://localhost:11434";
+
 const chatBox = document.getElementById("messages");
+
 const models=[];
+
 const modelSelect = document.getElementById("modelSelect");
 
+
+// get list of models
 const modelList = async () => {
     
         const res = await fetch(
@@ -31,7 +40,14 @@ const modelList = async () => {
         });
     
 }
+
+//pre occupy the model list on page load
 modelList();
+
+
+
+//get response from ollama backend running on @url
+
 const getResponse = async () => {
     try {
         addLoading();
@@ -76,11 +92,14 @@ const getResponse = async () => {
     }
 };
 
+
 userInput.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
         sendMsg();
     }
 });
+
+
 const removeLoading=()=>{
     const loadingD=document.getElementById("loading");
     loadingD.remove()
@@ -106,6 +125,10 @@ const addLoading=()=>{
     chatBox.appendChild(loadingDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+
+
+
 const deleteLoading=()=>{
     const loadingElement = document.getElementById("loading");
     if (loadingElement) {
@@ -114,6 +137,7 @@ const deleteLoading=()=>{
 }
 
 
+// on sucessfull response bot add bot msg to div
 const addBotMsg = (msg) => {
     console.log("Messages array:", messages);
     var msg=getThinkMsg(msg["content"]);
